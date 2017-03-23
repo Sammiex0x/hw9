@@ -1,0 +1,56 @@
+<html>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<head>
+	<title> PLACES ON UVIC</title>
+	<link rel="stylesheet" type="text/css" href="hw9.css">
+	<script src="hw9.js"></script>
+</head>
+<body>
+    <h1> Sam's MAP of UVIC </h1>
+    <h1> LIST YOUR FAVOURITE PLACES AT UVIC </h1>
+<h1> 
+<div id="controls">
+    <label>Place Name: </label><input type="text" id="carmake" /><br />
+    <label>Enter in Latitude, Longitude: </label><input type="text" id="carmodel" /><br />
+    <button type="button" id="addcar" onclick="addCar();">Add Place</button>
+</div>
+<div id="carlistholder">
+    <h3>PLACES ON CAMPUS</h3>
+    <ul id="carlist">
+    </ul>
+</div>
+<hr>
+<br>
+<div id="map" style="width:700px;height:500px;"></div>
+
+<script>
+function myMap() {
+  var mapCanvas = document.getElementById("map");
+  var myCenter=new google.maps.LatLng(48.463445, -123.311755);
+  var mapOptions = {center: myCenter, zoom: 16};
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  google.maps.event.addListener(map, 'click', function(event) {
+    placeMarker(map, event.latLng);
+  });
+}
+function placeMarker(map, location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map
+  });
+  var infowindow = new google.maps.InfoWindow({
+    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+  });
+  infowindow.open(map,marker);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Zcg4OJPiN7UhbJe-ZYPi1V9yNPyVCPo&callback=myMap"></script>
+
+	
+</body>
+</html>

@@ -1,0 +1,18 @@
+body {
+    color: purple;
+}
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    Background: lightgrey;
+}
+
+h1 {
+    font-weight: bold;   
+}
+
+#map {
+  height: 500px;
+
+  width: 700px;
+ }
